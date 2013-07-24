@@ -24,7 +24,7 @@ It supports RPM- and DEB-based installation and makes use of the packages provid
 
 # Recipes
 
-* riemann-server::default - Installs a Riemann server including the dashboard
+* riemann-server::default - Installs the Riemann server only
 * riemann-server::server - Installs the Riemann server only
 * riemann-server::dashboard - Installs the Riemann dashboard only
 
