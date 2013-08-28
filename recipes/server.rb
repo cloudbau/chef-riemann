@@ -31,9 +31,13 @@ if platform_family?("debian")
   remote_file "/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb" do
     source "http://aphyr.com/riemann/riemann_#{node[:riemann][:server][:version]}_all.deb"
     mode 0644
+    not_if "dpkg -s riemann | grep Version | grep #{node[:riemann][:server][:version]}"
+    notifies :install, "dpkg_package[/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb]", :immediately
   end
 
-  dpkg_package "/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb"
+  dpkg_package "/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb" do
+    action :nothing
+  end
 
 elsif platform?("redhat", "centos", "fedora", "amazon", "scientific")
 
