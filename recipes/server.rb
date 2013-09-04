@@ -32,10 +32,11 @@ if platform_family?("debian")
     source "http://aphyr.com/riemann/riemann_#{node[:riemann][:server][:version]}_all.deb"
     mode 0644
     not_if "dpkg -s riemann | grep Version | grep #{node[:riemann][:server][:version]}"
-    notifies :install, "dpkg_package[/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb]", :immediately
+    notifies :install, "dpkg_package[riemann]", :immediately
   end
 
-  dpkg_package "/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb" do
+  dpkg_package "riemann" do
+    source "/tmp/riemann_#{node[:riemann][:server][:version]}_all.deb"
     action :nothing
   end
 
