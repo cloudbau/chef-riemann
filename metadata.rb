@@ -10,7 +10,7 @@ supports "Ubuntu"
 
 depends "runit"
 depends "java"
-depends "rbenv", "1.4.2" #riotgames
+depends "rbenv", ">= 1.4.2" #riotgames
 
 recipe "riemann-server::default", "Installs a Riemann server including the dashboard"
 recipe "riemann-server::server", "Installs the Riemann server only"
